@@ -16,6 +16,13 @@ var userData = [
   {
     name: "Charlie",
     password: "third"
+<<<<<<< HEAD
+=======
+  },
+  {
+    name: "Delta",
+    password: "fourth"
+>>>>>>> cd9907e80edf549a75e4fe646cc83c097d72f231
   }
 ];
 
@@ -98,6 +105,7 @@ function seedDB(){
 		console.log("Registered a new user named", newUser.username);
 		counterUser++;
 		if(counterUser === userData.length){
+<<<<<<< HEAD
 		  createSections(0);
 		}
 	      });
@@ -137,6 +145,90 @@ function seedDB(){
 	  }
 	  
 	  
+=======
+		  createSections();
+		}
+  });
+});
+	  }
+
+	  function createSections(){
+	    var counterSection = 0;
+	    sectionData.forEach(function(sectionName, i){
+	      Section.create({name: sectionData[i]}, function(err, newSection){
+		if(err){
+		  console.log(err);
+		}
+		console.log("Created a new section named", newSection.name);
+		counterSection++;
+		if(counterSection === sectionData.length){
+		  createPosts();
+		}
+  });
+});
+
+	    function createPosts(){
+	      var counterPost = 0;
+	      postData.forEach(function(postGroup, i){
+		postGroup.forEach(function(post, j){
+		  Post.create(post, function(err, newPost){
+		    if(err){
+		      console.log(err);
+		    }
+		    console.log("Created a new post named", newPost.name);
+		  });
+		});
+		counterPost++;
+		if(counterPost === postData.length){
+		  associate();
+		}
+  });
+	    }
+
+	    function associate(){
+
+	    }
+	    /* sectionData.forEach(function(sectionName, i){
+	       Section.create({name: sectionData[i]}, function(err, newSection){
+	       if(err){
+	       console.log(err)
+	       } else {
+	       console.log("Added a new section!")
+	       var newPosts = []
+	       var counterPost = 0
+	       postData[i].forEach(function(post){
+	       Post.create(post, function(err, newPost){
+	       if(err){
+	       console.log(err)
+	       }
+	       newPosts.push(newPost)
+	       console.log("Added a new post!")
+	       })
+	       counterPost++
+	       if(counterPost === postData[i].length - 1){
+	       console.log(newPosts)
+	       callBackPost()
+	       }
+	       })
+
+	       function callBackPost(){
+	       console.log(newPosts)
+	       newSection.posts.concat(newPosts)
+	       newSection.save(function(err, section){
+	       if(err){
+	       console.log(err)
+	       } else {
+	       //			console.log(section)
+	       }
+	       })
+
+	       }
+	       }
+	       })
+	       }) */
+	  }
+
+>>>>>>> cd9907e80edf549a75e4fe646cc83c097d72f231
 	})
       })
     })
