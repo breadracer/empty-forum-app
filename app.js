@@ -35,7 +35,7 @@ app.use(express.static(__dirname + "/public"));
 //===========================
 
 app.use(require("express-session")({
-  secret: "The secret sentence.",
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false
 }));
