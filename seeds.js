@@ -16,10 +16,6 @@ var userData = [
   {
     name: "Charlie",
     password: "third"
-  },
-  {
-    name: "Delta",
-    password: "fourth"
   }
 ];
 
@@ -72,6 +68,8 @@ var postData = [
 
 var sectionData = ["Burger King", "McDonald", "In-N-Out"];
 
+var userId = [];
+
 function seedDB(){
   Comment.remove({}, function(err){
     if(err){
@@ -100,6 +98,7 @@ function seedDB(){
 		  console.log(err);
 		}
 		console.log("Registered a new user named", newUser.username);
+		setTimeout(assignPosts.bind(this, counterUser, newUser), 10);
 		counterUser++;
 		if(counterUser === userData.length){
 		  createSections(0);
@@ -108,6 +107,15 @@ function seedDB(){
 	    });
 	  }
 
+	  function assignPosts(i, assignedUser){
+	    postData.forEach(function(postlist){
+	      postlist[i].author = {
+		id: assignedUser._id,
+		username: assignedUser.username
+	      };
+	    });
+	  }
+	  
 	  function createSections(i){
 	    Section.create({name: sectionData[i]}, function(err, newSection){
 	      if(err){
