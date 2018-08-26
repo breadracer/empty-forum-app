@@ -47,16 +47,12 @@ router.get("/logout", function(req, res){
 // index
 router.get("/", function(req, res){
   if(req.isAuthenticated()){
-    res.render("index") ;
+	res.render("index");
   } else {
     res.render("start");
   }
 });
 
-// Star route
-router.get("*", function(req, res){
-  res.send("Cannot get the page");
-});
 
 
 module.exports = router;

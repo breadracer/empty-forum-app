@@ -19,6 +19,7 @@ var Post = require("./models/post");
 var Section = require("./models/section");
 
 var indexRoutes = require("./routes/index");
+var sectionRoutes = require("./routes/sections");
 
 var seedDB = require("./seeds");
 
@@ -56,7 +57,13 @@ app.use(function(req, res, next){
 
 seedDB();
 
-app.use(indexRoutes);
+app.use("/", indexRoutes);
+app.use("/sections", sectionRoutes);
+// Star route
+app.get("*", function(req, res){
+  res.send("Cannot get the page");
+});
+
 
 app.listen(3010, "localhost", function(){
   console.log("Forum server started on port 3010");

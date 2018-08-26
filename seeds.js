@@ -122,7 +122,7 @@ function seedDB(){
 		console.log(err);
 	      }
 	      console.log("Created a new section named", newSection.name);
-	      createPosts(i, 0, newSection);
+	      setTimeout(createPosts.bind(this, i, 0, newSection), 10);
 	      if(++i !== sectionData.length){
 		setTimeout(createSections.bind(this, i), 10);
 	      }
