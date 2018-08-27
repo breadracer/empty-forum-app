@@ -28,7 +28,7 @@ var app = express();
 mongoose.connect("mongodb://localhost/forum");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/pubnlic"));
 
 
 //===========================
@@ -59,6 +59,7 @@ seedDB();
 
 app.use("/", indexRoutes);
 app.use("/sections", sectionRoutes);
+
 // Star route
 app.get("*", function(req, res){
   res.send("Cannot get the page");

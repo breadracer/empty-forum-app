@@ -11,7 +11,7 @@ router.get("/", function(req, res){
 });
 
 router.get("/:sectionId", function(req, res){
-  Section.findById(req.params.sectionId, function(err, section){
+  Section.findById(req.params.sectionId).populate("posts").exec(function(err, section){
     res.render("sections/show", {section: section});
   });
 });
