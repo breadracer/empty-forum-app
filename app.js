@@ -20,6 +20,7 @@ var Section = require("./models/section");
 
 var indexRoutes = require("./routes/index");
 var sectionRoutes = require("./routes/sections");
+var postRoutes = require("./routes/posts");
 
 var seedDB = require("./seeds");
 
@@ -59,6 +60,7 @@ seedDB();
 
 app.use("/", indexRoutes);
 app.use("/sections", sectionRoutes);
+app.use("/posts", postRoutes);
 
 // Star route
 app.get("*", function(req, res){
