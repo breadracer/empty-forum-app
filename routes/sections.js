@@ -23,7 +23,8 @@ router.get("/:sectionId", function(req, res){
 
 // CREATE
 router.post("/:sectionId", function(req, res){
-  Post.create(req.post, function(err, post){
+  console.log(req.body.post);
+  Post.create(req.body.post, function(err, post){
     if(err){
       console.log(err);
     }
