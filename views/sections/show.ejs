@@ -1,13 +1,15 @@
 <% include ../partials/header %>
-
 <h1><%= section.name %></h1>
 <h4>Logged in as <%= currentUser.username %></h4>
-
 <ul>
   <% section.posts.forEach(function(post){ %>
     <li><a href="/posts/<%= post._id %>"><%= post.name %></a></li>
   <% }); %>
   <li><a href="/logout">Log out!</a></li>
 </ul>
-
+<form action="/sections/<%= section._id %>" method="POST">
+  <input type="text" name="post[name]" placeholder="Title">
+  <input type="text" name="post[content]" placeholder="Content">
+  <input type="submit" value="Submit!">
+</form>
 <% include ../partials/footer %>
