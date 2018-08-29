@@ -6,7 +6,6 @@ var bodyParser = require("body-parser");
 var Post = require("../models/post");
 var router = express.Router();
 
-
 // INDEX
 router.get("/", function(req, res){
   Section.find({}, function(err, sections){
@@ -23,7 +22,6 @@ router.get("/:sectionId", function(req, res){
 
 // CREATE
 router.post("/:sectionId", function(req, res){
-  console.log(req.body.post);
   Post.create(req.body.post, function(err, post){
     if(err){
       console.log(err);

@@ -29,7 +29,7 @@ var app = express();
 mongoose.connect("mongodb://localhost/forum");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
-app.use(express.static(__dirname + "/pubnlic"));
+app.use(express.static(__dirname + "/public"));
 
 
 //===========================
